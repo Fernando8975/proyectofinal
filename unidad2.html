@@ -9,57 +9,41 @@
 <body>
   <header>
     <nav class="topbar" aria-label="Navegación por unidades">
-      <a class="nav-btn" href="unidad1.html"><span class="dot"></span> Unidad 1</a>
-      <a class="nav-btn active" href="unidad2.html"><span class="dot"></span> Unidad 2</a>
-      <a class="nav-btn" href="unidad3.html"><span class="dot"></span> Unidad 3</a>
+      <a class="nav-btn u1" href="unidad1.html">Unidad 1</a>
+      <a class="nav-btn u2" href="unidad2.html">Unidad 2</a>
+      <a class="nav-btn u3" href="unidad3.html">Unidad 3</a>
     </nav>
 
     <div class="brand-row">
       <svg class="logo-badge" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo FJGL">
-        <defs>
-          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#63B3ED"/>
-            <stop offset="100%" stop-color="#68D391"/>
-          </linearGradient>
-          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#1A2336"/>
-            <stop offset="100%" stop-color="#0d1a2e"/>
-          </linearGradient>
-        </defs>
-        <circle cx="50" cy="50" r="47" fill="url(#g2)" stroke="url(#g1)" stroke-width="2"/>
-        <text x="14" y="58" font-family="JetBrains Mono, monospace" font-size="22" fill="#63B3ED" opacity="0.5">&lt;/&gt;</text>
-        <text x="50" y="56" text-anchor="middle" font-family="Syne, sans-serif" font-size="26" font-weight="800" fill="url(#g1)">FJGL</text>
-        <circle cx="50" cy="70" r="3" fill="#68D391"/>
+        <circle cx="50" cy="50" r="47" fill="#0f172a" stroke="#CE93D8" stroke-width="2"/>
+        <text x="14" y="58" font-family="monospace" font-size="22" fill="#CE93D8" opacity="0.6">&lt;/&gt;</text>
+        <text x="50" y="56" text-anchor="middle" font-family="Syne, sans-serif" font-size="24" font-weight="800" fill="#CE93D8">FJGL</text>
       </svg>
       <div class="brand-text">
         <p class="brand-tag">// unidad_02</p>
-        <h1>Unidad <span>2</span></h1>
+        <h1>Unidad <span style="color:#CE93D8">2</span></h1>
         <p class="brand-sub">Análisis y diseño de soluciones</p>
       </div>
     </div>
-
-    <a class="back-link" href="index.html">← Volver al portafolio</a>
   </header>
 
   <main>
-    <p class="section-label">// contenido</p>
-    <div class="unit-body">
-      <h2 class="section-heading">Diseño de sistemas</h2>
-      <p>La segunda unidad se enfoca en la transformación de requerimientos en soluciones claras, estructuradas y escalables mediante herramientas y técnicas de análisis.</p>
-      <div class="grid">
-        <article class="card">
-          <h3>Enfoque</h3>
-          <p>Comprender necesidades del usuario y definir buenas soluciones.</p>
-        </article>
-        <article class="card">
-          <h3>Herramientas</h3>
-          <p>Diagramas, casos de uso y documentación funcional.</p>
-        </article>
-        <article class="card">
-          <h3>Resultado</h3>
-          <p>Diseñar una propuesta coherente para un sistema simple.</p>
-        </article>
-      </div>
+    <p class="section-label">// dificultad</p>
+    <div class="cloud-section-label">Nivel de comprensión</div>
+    <div class="cloud-row" aria-label="Dificultad 3 de 5">
+      <span class="cloud"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" fill="#CE93D8"/></svg></span>
+      <span class="cloud"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" fill="#CE93D8"/></svg></span>
+      <span class="cloud"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" fill="#CE93D8"/></svg></span>
+      <span class="cloud"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" fill="#2D3748"/></svg></span>
+      <span class="cloud"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" fill="#2D3748"/></svg></span>
+      <span class="cloud-label">3/5</span>
+    </div>
+    <div class="diff-track"><div class="diff-fill t2" style="width:60%"></div></div>
+
+    <div class="unit-card c2" style="margin-top:1rem;">
+      <h3 class="card-title">Diseño de sistemas</h3>
+      <p>Se transforma la información en soluciones claras, estructuradas y útiles para resolver problemas reales.</p>
     </div>
   </main>
 </body>

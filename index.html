@@ -9,61 +9,80 @@
 <body>
   <header>
     <nav class="topbar" aria-label="Navegación principal">
-      <a class="nav-btn active" href="index.html"><span class="dot"></span> Portafolio</a>
-      <a class="nav-btn" href="unidad1.html"><span class="dot"></span> Unidad 1</a>
-      <a class="nav-btn" href="unidad2.html"><span class="dot"></span> Unidad 2</a>
-      <a class="nav-btn" href="unidad3.html"><span class="dot"></span> Unidad 3</a>
+      <a class="nav-btn" href="index.html">Portafolio</a>
+      <a class="nav-btn u1" href="unidad1.html">Unidad 1</a>
+      <a class="nav-btn u2" href="unidad2.html">Unidad 2</a>
+      <a class="nav-btn u3" href="unidad3.html">Unidad 3</a>
     </nav>
 
     <div class="brand-row">
       <svg class="logo-badge" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo FJGL">
         <defs>
           <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#63B3ED"/>
-            <stop offset="100%" stop-color="#68D391"/>
+            <stop offset="0%" stop-color="#4FC3F7"/>
+            <stop offset="100%" stop-color="#69F0AE"/>
           </linearGradient>
           <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#1A2336"/>
-            <stop offset="100%" stop-color="#0d1a2e"/>
+            <stop offset="0%" stop-color="#0f172a"/>
+            <stop offset="100%" stop-color="#020617"/>
           </linearGradient>
         </defs>
         <circle cx="50" cy="50" r="47" fill="url(#g2)" stroke="url(#g1)" stroke-width="2"/>
-        <text x="14" y="58" font-family="JetBrains Mono, monospace" font-size="22" fill="#63B3ED" opacity="0.5">&lt;/&gt;</text>
+        <text x="14" y="58" font-family="monospace" font-size="22" fill="#4FC3F7" opacity="0.6">&lt;/&gt;</text>
         <text x="50" y="56" text-anchor="middle" font-family="Syne, sans-serif" font-size="26" font-weight="800" fill="url(#g1)">FJGL</text>
-        <circle cx="50" cy="70" r="3" fill="#68D391"/>
       </svg>
       <div class="brand-text">
         <p class="brand-tag">// portfolio</p>
-        <h1>Fernando Javier <span>Garcia Llulluna</span></h1>
-        <p class="brand-sub">Estudiante de Ingeniería en Software · Universidad Técnica de Cotopaxi</p>
+        <h1>Fernando Javier <span style="color:#4FC3F7">Garcia Llulluna</span></h1>
+        <p class="brand-sub"><strong>Estudiante</strong> de Ingeniería en Software · UTC</p>
       </div>
     </div>
   </header>
 
   <main>
     <p class="section-label">// presentación</p>
-    <div class="unit-body">
-      <h2 class="section-heading">Bienvenido a mi portafolio</h2>
-      <p>Este proyecto reúne las unidades de estudio del curso de Ingeniería en Software de forma organizada y visual. Aquí puedes revisar los contenidos de cada unidad y navegar entre ellas con una experiencia limpia y moderna.</p>
+    <h2 class="section-heading">Bienvenido a mi portafolio</h2>
+    <p class="section-intro">Este proyecto organiza las unidades del curso de ingeniería en software con una interfaz moderna, visual y sencilla de navegar.</p>
 
-      <div class="grid">
-        <article class="card">
-          <h3>Unidad 1</h3>
-          <p>Fundamentos y conceptos iniciales de la ingeniería de software.</p>
-          <a class="nav-btn" href="unidad1.html">Ver unidad</a>
-        </article>
-        <article class="card">
-          <h3>Unidad 2</h3>
-          <p>Análisis y diseño de soluciones tecnológicas coherentes.</p>
-          <a class="nav-btn" href="unidad2.html">Ver unidad</a>
-        </article>
-        <article class="card">
-          <h3>Unidad 3</h3>
-          <p>Aplicación práctica de los conocimientos en proyectos y recursos del curso.</p>
-          <a class="nav-btn" href="unidad3.html">Ver unidad</a>
-        </article>
+    <section class="units-grid" aria-label="Unidades del curso">
+      <a class="unit-card c1" href="unidad1.html">
+        <div class="card-icon">📘</div>
+        <div class="card-num t1">Unidad 01</div>
+        <h3 class="card-title">Fundamentos</h3>
+        <p>Conceptos iniciales, importancia del software y bases de la ingeniería.</p>
+        <span class="card-cta t1">Explorar →</span>
+      </a>
+
+      <a class="unit-card c2" href="unidad2.html">
+        <div class="card-icon">🧠</div>
+        <div class="card-num t2">Unidad 02</div>
+        <h3 class="card-title">Diseño</h3>
+        <p>Análisis de requerimientos y construcción de soluciones estructuradas.</p>
+        <span class="card-cta t2">Explorar →</span>
+      </a>
+
+      <a class="unit-card c3" href="unidad3.html">
+        <div class="card-icon">🚀</div>
+        <div class="card-num t3">Unidad 03</div>
+        <h3 class="card-title">Aplicación</h3>
+        <p>Prácticas, recursos y actividades para consolidar el aprendizaje.</p>
+        <span class="card-cta t3">Explorar →</span>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="bib-card">
+      <p class="bib-title">// Bibliografía</p>
+      <div class="bib-entry">
+        <span class="bib-num">[1]</span>
+        <p class="bib-text"><strong>Garcia Llulluna, F. J.</strong> — Estudiante de Ingeniería en Software, <span class="bib-inst">UTC</span>.</p>
+      </div>
+      <div class="bib-entry">
+        <span class="bib-num">[2]</span>
+        <p class="bib-text"><strong>Unidad Educativa Glend Side Fe y Alegría</strong> — Bachillerato en Ciencias.</p>
       </div>
     </div>
-  </main>
+  </footer>
 </body>
 </html>
