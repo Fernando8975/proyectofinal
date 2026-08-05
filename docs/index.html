@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
   <header>
     <nav class="topbar" aria-label="Navegación principal">
       <a class="nav-btn active" href="index.html"><span class="dot"></span> Portafolio</a>
@@ -19,8 +22,8 @@
       <svg class="logo-badge" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo FJGL">
         <defs>
           <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#63B3ED"/>
-            <stop offset="100%" stop-color="#68D391"/>
+            <stop offset="0%" stop-color="#67D7FF"/>
+            <stop offset="100%" stop-color="#79F2B3"/>
           </linearGradient>
           <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stop-color="#1A2336"/>
@@ -28,42 +31,88 @@
           </linearGradient>
         </defs>
         <circle cx="50" cy="50" r="47" fill="url(#g2)" stroke="url(#g1)" stroke-width="2"/>
-        <text x="14" y="58" font-family="JetBrains Mono, monospace" font-size="22" fill="#63B3ED" opacity="0.5">&lt;/&gt;</text>
+        <text x="14" y="58" font-family="JetBrains Mono, monospace" font-size="22" fill="#67D7FF" opacity="0.5">&lt;/&gt;</text>
         <text x="50" y="56" text-anchor="middle" font-family="Syne, sans-serif" font-size="26" font-weight="800" fill="url(#g1)">FJGL</text>
-        <circle cx="50" cy="70" r="3" fill="#68D391"/>
+        <circle cx="50" cy="70" r="3" fill="#79F2B3"/>
       </svg>
       <div class="brand-text">
         <p class="brand-tag">// portfolio</p>
-        <h1>Fernando Javier <span>Garcia Llulluna</span></h1>
+        <h1>Fernando Javier <span>García Llulluna</span></h1>
         <p class="brand-sub">Estudiante de Ingeniería en Software · Universidad Técnica de Cotopaxi</p>
+        <p class="brand-copy">Este portafolio presenta cada unidad de forma visual, ordenada y sencilla para que cualquier persona pueda entender el recorrido del curso.</p>
       </div>
     </div>
   </header>
 
   <main>
-    <p class="section-label">// presentación</p>
-    <div class="unit-body">
-      <h2 class="section-heading">Bienvenido a mi portafolio</h2>
-      <p>Este proyecto reúne las unidades de estudio del curso de Ingeniería en Software de forma organizada y visual. Aquí puedes revisar los contenidos de cada unidad y navegar entre ellas con una experiencia limpia y moderna.</p>
-
-      <div class="grid">
-        <article class="card">
-          <h3>Unidad 1</h3>
-          <p>Fundamentos y conceptos iniciales de la ingeniería de software.</p>
-          <a class="nav-btn" href="unidad1.html">Ver unidad</a>
-        </article>
-        <article class="card">
-          <h3>Unidad 2</h3>
-          <p>Análisis y diseño de soluciones tecnológicas coherentes.</p>
-          <a class="nav-btn" href="unidad2.html">Ver unidad</a>
-        </article>
-        <article class="card">
-          <h3>Unidad 3</h3>
-          <p>Aplicación práctica de los conocimientos en proyectos y recursos del curso.</p>
-          <a class="nav-btn" href="unidad3.html">Ver unidad</a>
-        </article>
+    <section class="hero-card">
+      <div class="hero-copy">
+        <p class="section-label">// presentación</p>
+        <h2>Aprende de forma sencilla, visual y organizada</h2>
+        <p>Cada unidad está pensada para explicar conceptos clave de manera práctica, con una navegación directa y un diseño que facilita la comprensión.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="unidad1.html">Explorar unidad 1</a>
+          <a class="secondary-btn" href="unidad3.html">Ver proyecto final</a>
+        </div>
       </div>
+
+      <div class="hero-highlights">
+        <div class="mini-card">
+          <span class="mini-title">🎯 Objetivo</span>
+          <p>Mostrar el progreso del curso con contenido claro y accesible.</p>
+        </div>
+        <div class="mini-card">
+          <span class="mini-title">🧠 Diseño</span>
+          <p>Colores, secciones y botones que guían la lectura con facilidad.</p>
+        </div>
+        <div class="mini-card">
+          <span class="mini-title">🚀 Navegación</span>
+          <p>Pasar entre unidades de forma rápida y sin perderse.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-grid">
+      <article class="info-panel">
+        <h3>¿Qué encontrarás aquí?</h3>
+        <ul class="feature-list">
+          <li>Conceptos de ingeniería de software explicados paso a paso.</li>
+          <li>Un contenido organizado por unidades para aprender mejor.</li>
+          <li>Vistas atractivas que ayudan a entender la idea central.</li>
+        </ul>
+      </article>
+
+      <article class="info-panel accent">
+        <h3>Ruta de aprendizaje</h3>
+        <div class="step-list">
+          <div class="step"><span>1</span><p>Fundamentos y bases conceptuales.</p></div>
+          <div class="step"><span>2</span><p>Análisis y diseño de soluciones.</p></div>
+          <div class="step"><span>3</span><p>Aplicación práctica en un proyecto final.</p></div>
+        </div>
+      </article>
+    </section>
+
+    <div class="grid">
+      <article class="card">
+        <h3>Unidad 1</h3>
+        <p>Fundamentos y conceptos iniciales de la ingeniería de software.</p>
+        <a class="nav-btn" href="unidad1.html">Ver unidad</a>
+      </article>
+      <article class="card">
+        <h3>Unidad 2</h3>
+        <p>Análisis y diseño de soluciones tecnológicas coherentes.</p>
+        <a class="nav-btn" href="unidad2.html">Ver unidad</a>
+      </article>
+      <article class="card">
+        <h3>Unidad 3</h3>
+        <p>Aplicación práctica de los conocimientos en proyectos y recursos del curso.</p>
+        <a class="nav-btn" href="unidad3.html">Ver unidad</a>
+      </article>
     </div>
   </main>
+
+  <footer class="footer-card">
+    <p>Hecho para aprender, explorar y compartir conocimiento.</p>
+  </footer>
 </body>
 </html>
