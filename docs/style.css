@@ -144,6 +144,21 @@ header { padding: 28px 0 16px; margin-bottom: 4rem; }
   transform: rotate(15deg) scale(1.1);
 }
 
+.profile-image {
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid rgba(255,255,255,0.06);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  transition: transform 0.4s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
 .brand-tag {
   margin: 0 0 6px;
   font-size: 0.8rem;
@@ -461,5 +476,6 @@ main { padding: 18px 0 30px; }
 @media (max-width: 640px) {
   .brand-row { align-items: flex-start; }
   .logo-badge { width: 92px; height: 92px; }
+  .profile-image { width: 92px; height: 92px; }
   .hero-actions { flex-direction: column; align-items: stretch; }
 }
