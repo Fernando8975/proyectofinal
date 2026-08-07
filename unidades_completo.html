@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unidades de Estudio — Fernando Javier Garcia Llulluna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:      #0A0E14;
+    --paper-2:    #10161F;
+    --ink:        #E7EEF7;
+    --ink-soft:   #8FA3B8;
+    --teal:       #2F7BFF;
+    --teal-dark:  #6FA8FF;
+    --brass:      #4A93FF;
+    --line:       #1E2735;
+    --card:       #101724;
+    --radius:     14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+    padding: 40px 24px;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; }
+
+  /* ── UNITS SECTION ── */
+  .units { margin-top: 0; }
+
+  .units-heading {
+    margin-bottom: 28px;
+  }
+  .units-heading h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .units-heading .sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── TABS ── */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 28px;
+    position: relative;
+    padding-bottom: 0;
+  }
+  .tab-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: color .2s;
+    position: relative;
+    z-index: 1;
+  }
+  .tab-btn[aria-selected="true"] {
+    color: var(--teal-dark);
+  }
+  .tab-btn:hover { color: var(--ink); }
+
+  .tab-indicator {
+    position: absolute;
+    bottom: -1px;
+    height: 2px;
+    background: var(--teal);
+    border-radius: 2px;
+    box-shadow: 0 0 10px 2px rgba(47,123,255,0.6);
+    transition: left .35s cubic-bezier(.65,0,.35,1), width .35s cubic-bezier(.65,0,.35,1);
+  }
+
+  /* ── PANELS ── */
+  .panels { position: relative; }
+  .panel { display: none; }
+  .panel[aria-hidden="false"] {
+    display: block;
+    animation: panelIn .35s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .panel > h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 22px;
+  }
+
+  /* ── TEMAS GRID ── */
+  .temas-intro {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+  .temas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .tema-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .tema-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(47,123,255,0.15);
+  }
+  .tema-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--teal-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .tema-label {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .tema-arrow {
+    font-size: 1rem;
+    color: var(--teal);
+    margin-top: 4px;
+  }
+
+  /* ── TEMA DETAIL ── */
+  .tema-detail {
+    animation: panelIn .35s cubic-bezier(.22,1,.36,1) both;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 6px 14px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: color .2s, border-color .2s;
+  }
+  .back-btn:hover { color: var(--ink); border-color: var(--teal); }
+  .back-arrow { font-size: 1rem; }
+
+  .tema-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 20px;
+  }
+
+  /* ── SUBTABS ── */
+  .subtabs {
+    display: flex;
+    gap: 2px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .subtab-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: color .2s;
+  }
+  .subtab-btn[aria-selected="true"] {
+    color: var(--teal-dark);
+    font-weight: 600;
+  }
+  .subtab-indicator {
+    position: absolute;
+    bottom: -1px;
+    height: 2px;
+    background: var(--teal);
+    border-radius: 2px;
+    box-shadow: 0 0 8px 1px rgba(47,123,255,0.75);
+    transition: left .35s cubic-bezier(.65,0,.35,1), width .35s cubic-bezier(.65,0,.35,1);
+  }
+
+  /* ── SUBPANELS ── */
+  .subpanels { padding-top: 4px; }
+  .subpanel { display: none; }
+  .subpanel[aria-hidden="false"] {
+    display: block;
+    animation: panelIn .4s cubic-bezier(.22,1,.36,1) both;
+  }
+  .subpanel p {
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+    line-height: 1.75;
+    max-width: 72ch;
+    margin: 0;
+  }
+  .pending {
+    display: inline-block;
+    margin-top: 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section class="units">
+  <div class="units-heading">
+    <h2>Unidades de estudio</h2>
+    <span class="sub">programación y algoritmia — índice de contenidos</span>
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="Unidades del curso">
+    <button class="tab-btn" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true"  data-target="1">unidad-1</button>
+    <button class="tab-btn" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" data-target="2">unidad-2</button>
+    <button class="tab-btn" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" data-target="3">unidad-3</button>
+    <span class="tab-indicator" id="tab-indicator"></span>
+  </div>
+
+  <div class="panels">
+
+    <!-- ══════════ PANEL UNIDAD 1 ══════════ -->
+    <div class="panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="false">
+      <h3>Unidad 1</h3>
+
+      <!-- ── VISTA TEMAS ── -->
+      <div class="temas-view" data-unidad="1">
+        <p class="temas-intro">Selecciona un tema para explorar sus conceptos, definición, ejemplos y ejercicios.</p>
+        <div class="temas-grid">
+          <button class="tema-card" data-tema="1">
+            <span class="tema-eyebrow">unidad-1</span>
+            <span class="tema-label">Modelo de Von Neumann y Harvard</span>
+            <span class="tema-arrow">→</span>
+          </button>
+          <button class="tema-card" data-tema="2">
+            <span class="tema-eyebrow">unidad-1</span>
+            <span class="tema-label">Sistemas operativos</span>
+            <span class="tema-arrow">→</span>
+          </button>
+          <button class="tema-card" data-tema="3">
+            <span class="tema-eyebrow">unidad-1</span>
+            <span class="tema-label">Sistemas de numeración y conversiones</span>
+            <span class="tema-arrow">→</span>
+          </button>
+          <button class="tema-card" data-tema="4">
+            <span class="tema-eyebrow">unidad-1</span>
+            <span class="tema-label">Aritmética binaria</span>
+            <span class="tema-arrow">→</span>
+          </button>
+          <button class="tema-card" data-tema="5">
+            <span class="tema-eyebrow">unidad-1</span>
+            <span class="tema-label">Álgebra de Bool</span>
+            <span class="tema-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── DETALLE TEMA ── -->
+      <div class="tema-detail" data-unidad="1" hidden>
+        <button class="back-btn"><span class="back-arrow">←</span> Volver a los temas</button>
+        <h4 class="tema-title"></h4>
+        <div class="subtabs" role="tablist">
+          <button class="subtab-btn" data-sub="conceptos"  aria-selected="true" >Conceptos</button>
+          <button class="subtab-btn" data-sub="definicion" aria-selected="false">Definición</button>
+          <button class="subtab-btn" data-sub="ejemplos"   aria-selected="false">Ejemplos</button>
+          <button class="subtab-btn" data-sub="ejercicios" aria-selected="false">Ejercicios</button>
+          <span class="subtab-indicator"></span>
+        </div>
+        <div class="subpanels">
+          <div class="subpanel" data-sub="conceptos"  aria-hidden="false"></div>
+          <div class="subpanel" data-sub="definicion" aria-hidden="true"></div>
+          <div class="subpanel" data-sub="ejemplos"   aria-hidden="true"></div>
+          <div class="subpanel" data-sub="ejercicios" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PANEL UNIDAD 2 ══════════ -->
+    <div class="panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true">
+      <h3>Unidad 2</h3>
+
+      <div class="temas-view" data-unidad="2">
+        <p class="temas-intro">Selecciona un tema para explorar sus conceptos, definición, ejemplos y ejercicios.</p>
+        <div class="temas-grid">
+          <button class="tema-card" data-tema="1">
+            <span class="tema-eyebrow">unidad-2</span>
+            <span class="tema-label">Algoritmos y sus características</span>
+            <span class="tema-arrow">→</span>
+          </button>
+          <button class="tema-card" data-tema="2">
+            <span class="tema-eyebrow">unidad-2</span>
+            <span class="tema-label">Los diagramas de flujo como herramienta útil</span>
+            <span class="tema-arrow">→</span>
+          </button>
+          <button class="tema-card" data-tema="3">
+            <span class="tema-eyebrow">unidad-2</span>
+            <span class="tema-label">Pseudocódigo: una herramienta útil</span>
+            <span class="tema-arrow">→</span>
+          </button>
+          <button class="tema-card" data-tema="4">
+            <span class="tema-eyebrow">unidad-2</span>
+            <span class="tema-label">Modelado de problemas</span>
+            <span class="tema-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tema-detail" data-unidad="2" hidden>
+        <button class="back-btn"><span class="back-arrow">←</span> Volver a los temas</button>
+        <h4 class="tema-title"></h4>
+        <div class="subtabs" role="tablist">
+          <button class="subtab-btn" data-sub="conceptos"  aria-selected="true" >Conceptos</button>
+          <button class="subtab-btn" data-sub="definicion" aria-selected="false">Definición</button>
+          <button class="subtab-btn" data-sub="ejemplos"   aria-selected="false">Ejemplos</button>
+          <button class="subtab-btn" data-sub="ejercicios" aria-selected="false">Ejercicios</button>
+          <span class="subtab-indicator"></span>
+        </div>
+        <div class="subpanels">
+          <div class="subpanel" data-sub="conceptos"  aria-hidden="false"></div>
+          <div class="subpanel" data-sub="definicion" aria-hidden="true"></div>
+          <div class="subpanel" data-sub="ejemplos"   aria-hidden="true"></div>
+          <div class="subpanel" data-sub="ejercicios" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PANEL UNIDAD 3 ══════════ -->
+    <div class="panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3" aria-hidden="true">
+      <h3>Unidad 3</h3>
+
+      <div class="temas-view" data-unidad="3">
+        <p class="temas-intro">Selecciona un tema para explorar sus conceptos, definición, ejemplos y ejercicios.</p>
+        <div class="temas-grid">
+          <button class="tema-card" data-tema="1">
+            <span class="tema-eyebrow">unidad-3</span>
+            <span class="tema-label">Lenguajes y paradigmas de programación</span>
+            <span class="tema-arrow">→</span>
+          </button>
+          <button class="tema-card" data-tema="2">
+            <span class="tema-eyebrow">unidad-3</span>
+            <span class="tema-label">Introducción a la programación en Python</span>
+            <span class="tema-arrow">→</span>
+          </button>
+          <button class="tema-card" data-tema="3">
+            <span class="tema-eyebrow">unidad-3</span>
+            <span class="tema-label">Operadores algebraicos, relacionales y lógicos</span>
+            <span class="tema-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tema-detail" data-unidad="3" hidden>
+        <button class="back-btn"><span class="back-arrow">←</span> Volver a los temas</button>
+        <h4 class="tema-title"></h4>
+        <div class="subtabs" role="tablist">
+          <button class="subtab-btn" data-sub="conceptos"  aria-selected="true" >Conceptos</button>
+          <button class="subtab-btn" data-sub="definicion" aria-selected="false">Definición</button>
+          <button class="subtab-btn" data-sub="ejemplos"   aria-selected="false">Ejemplos</button>
+          <button class="subtab-btn" data-sub="ejercicios" aria-selected="false">Ejercicios</button>
+          <span class="subtab-indicator"></span>
+        </div>
+        <div class="subpanels">
+          <div class="subpanel" data-sub="conceptos"  aria-hidden="false"></div>
+          <div class="subpanel" data-sub="definicion" aria-hidden="true"></div>
+          <div class="subpanel" data-sub="ejemplos"   aria-hidden="true"></div>
+          <div class="subpanel" data-sub="ejercicios" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /panels -->
+</section>
+
+</div><!-- /wrap -->
+
+<script>
+/* ══════════════════════════════════════════
+   CONTENIDO DE CADA TEMA
+   ══════════════════════════════════════════ */
+const temaData = {
+  1: [
+    /* ── Unidad 1 ── */
+    {
+      titulo:     'Modelo de Von Neumann y Harvard',
+      conceptos:  'Este modelo describe la organización básica de una computadora digital. En la arquitectura de Von Neumann, la CPU accede a instrucciones y datos desde la misma memoria, lo que simplifica su diseño pero puede generar cuellos de botella. En cambio, la arquitectura Harvard separa físicamente la memoria para instrucciones y datos, lo que permite un acceso más rápido y un mayor rendimiento en sistemas embebidos y procesamiento en tiempo real.',
+      definicion: 'La arquitectura de Von Neumann utiliza un único bus o espacio común para instrucciones y datos, mientras que la arquitectura Harvard usa caminos separados para cada tipo de información, favoreciendo la ejecución simultánea y la eficiencia del sistema.',
+      ejemplos:   'Un microcontrolador de un electrodoméstico puede usar Harvard para ejecutar instrucciones y leer datos de forma más rápida, mientras que una computadora personal tradicional suele seguir el modelo de Von Neumann por su flexibilidad y simplicidad de diseño.',
+      ejercicios: 'Explica con tus palabras la diferencia principal entre la arquitectura Von Neumann y Harvard, y señala en qué tipo de dispositivo usarías cada una. Justifica tu respuesta con un ejemplo real.'
+    },
+    {
+      titulo:     'Sistemas operativos',
+      conceptos:  'El sistema operativo es el software base que administra los recursos del computador. Controla la CPU, la memoria RAM, los dispositivos de entrada y salida, los archivos del sistema y la ejecución de programas. Además, proporciona una interfaz para que el usuario interactúe con el equipo de manera organizada y segura.',
+      definicion: 'Un sistema operativo es el programa principal encargado de coordinar el hardware y las aplicaciones, gestionando procesos, memoria, almacenamiento y servicios del sistema para que todo funcione de manera estable.',
+      ejemplos:   'Windows organiza tareas y archivos de forma visual; Linux se usa en servidores y entornos técnicos; macOS integra hardware y software de manera optimizada para ofrecer una experiencia más fluida.',
+      ejercicios: 'Compara dos sistemas operativos distintos que hayas usado. Menciona al menos tres diferencias entre ellos en cuanto a interfaz, seguridad y uso de recursos del hardware.'
+    },
+    {
+      titulo:     'Sistemas de numeración y conversiones: Binario, Octal y Hexadecimal',
+      conceptos:  'Los sistemas de numeración son formas de representar cantidades usando un conjunto de símbolos y una base determinada. El sistema binario usa dos dígitos, el octal usa ocho y el hexadecimal usa dieciséis, lo que resulta muy útil en computación porque permite representar datos de forma compacta y eficiente.',
+      definicion: 'Una conversión entre sistemas numéricos consiste en cambiar la base de representación sin alterar el valor original, por ejemplo, pasar de decimal a binario o de hexadecimal a octal.',
+      ejemplos:   'El número decimal 15 se representa como 1111 en binario, 17 en octal y F en hexadecimal. Estas conversiones son frecuentes en programación y en el diseño de circuitos digitales.',
+      ejercicios: 'Convierte los siguientes números: (a) 42 decimal a binario, (b) 255 decimal a hexadecimal, (c) 101101 binario a decimal. Muestra el procedimiento paso a paso.'
+    },
+    {
+      titulo:     'Aritmética binaria',
+      conceptos:  'La aritmética binaria realiza operaciones matemáticas utilizando únicamente dos dígitos: 0 y 1. Aunque parece simple, permite representar y procesar información digital en el hardware de las computadoras mediante operaciones lógicas y aritméticas.',
+      definicion: 'La aritmética binaria incluye operaciones de suma, resta, multiplicación y división, siguiendo reglas específicas que se basan en la base 2 del sistema.',
+      ejemplos:   'La suma 1 + 1 da como resultado 10 en binario, lo que muestra que al llegar a la base 2 se genera un acarreo. Este principio es fundamental para el funcionamiento de los circuitos y los procesadores.',
+      ejercicios: 'Resuelve las siguientes operaciones en binario: (a) 1011 + 0110, (b) 1100 − 0101, (c) 101 × 11. Verifica tus resultados convirtiéndolos a decimal.'
+    },
+    {
+      titulo:     'Álgebra de Bool',
+      conceptos:  'El álgebra booleana trabaja con proposiciones que pueden ser verdaderas o falsas. Usa operadores lógicos como AND, OR y NOT para combinar condiciones y construir reglas de decisión, lo que resulta esencial en circuitos digitales y en la lógica de programación.',
+      definicion: 'Es una rama de la lógica matemática que permite representar y analizar expresiones binarias mediante reglas algebraicas, facilitando la simplificación de circuitos y la toma de decisiones en sistemas computacionales.',
+      ejemplos:   'La expresión A AND B solo es verdadera si ambas condiciones son verdaderas; la expresión NOT A invierte el valor de A. Estas reglas son la base de la lógica usada en programación y electrónica.',
+      ejercicios: 'Construye la tabla de verdad para la expresión (A AND B) OR (NOT A). Luego simplifica la expresión si es posible y explica qué resultado obtienes.'
+    }
+  ],
+  2: [
+    /* ── Unidad 2 ── */
+    {
+      titulo:     'Algoritmos y sus características',
+      conceptos:  'Un algoritmo es una secuencia organizada de instrucciones que resuelve un problema concreto. Debe estar bien definido, tener un inicio y un fin, y producir una solución esperada cuando se ejecuta. Es la base de la programación porque permite traducir una idea en pasos precisos.',
+      definicion: 'Un algoritmo posee características como la finitud, la precisión, la entrada, la salida y la efectividad. Esto significa que debe terminar en un tiempo razonable y resolver el problema de manera correcta.',
+      ejemplos:   'Un algoritmo para ordenar una lista puede comparar pares de elementos y moverlos hasta dejar la colección en orden ascendente. Este tipo de procedimiento se usa en búsquedas, cálculos y procesamiento de datos.',
+      ejercicios: 'Diseña un algoritmo que reciba tres números y devuelva el mayor de los tres. Escribe los pasos en lenguaje natural indicando claramente la entrada, el proceso y la salida.'
+    },
+    {
+      titulo:     'Los diagramas de flujo como herramienta útil',
+      conceptos:  'Los diagramas de flujo son representaciones gráficas que muestran el orden de un proceso mediante símbolos como óvalos, rombos y flechas. Permiten visualizar de manera clara las decisiones, los pasos y la secuencia lógica de un algoritmo, incluso antes de escribir código.',
+      definicion: 'Un diagrama de flujo es una herramienta de análisis y diseño que facilita la comprensión de procesos complejos al mostrarlos de forma visual y estructurada.',
+      ejemplos:   'Un diagrama de flujo puede representar la lógica de un sistema que revisa si un número es positivo, negativo o cero, usando decisiones y ramificaciones para dirigir el proceso.',
+      ejercicios: 'Dibuja el diagrama de flujo para un sistema que reciba la nota de un estudiante y muestre si aprobó (≥ 7) o reprobó (< 7). Usa los símbolos correctos: inicio/fin, proceso y decisión.'
+    },
+    {
+      titulo:     'Pseudocódigo: una herramienta útil',
+      conceptos:  'El pseudocódigo es una forma de describir un algoritmo usando un lenguaje sencillo, cercano al humano, pero con estructura lógica. Es útil para planificar soluciones sin depender de la sintaxis exacta de un lenguaje de programación.',
+      definicion: 'Se define como una representación intermedia entre el lenguaje natural y el código real, ya que organiza las instrucciones de manera secuencial y comprensible.',
+      ejemplos:   'Un ejemplo típico sería: iniciar, leer un número, verificar si es par, mostrar "par" o "impar" y terminar. Este tipo de estructura ayuda a preparar el algoritmo antes de traducirlo a un lenguaje real.',
+      ejercicios: 'Escribe el pseudocódigo para un programa que calcule el promedio de cinco notas ingresadas por el usuario y determine si el estudiante aprobó o reprobó el curso.'
+    },
+    {
+      titulo:     'Modelado de problemas',
+      conceptos:  'El modelado de problemas consiste en identificar los elementos principales de una situación real: entradas, procesos, condiciones y resultados esperados. Esto permite transformar un problema complejo en una estructura lógica que pueda resolverse mediante algoritmos.',
+      definicion: 'Es la etapa de abstracción en la que se organiza la información relevante para comprender mejor el problema y diseñar una solución eficiente.',
+      ejemplos:   'En un problema de cálculo de promedio, se reconocen las notas como entradas, la suma y la división como proceso, y el resultado final como salida. Este enfoque facilita la construcción del algoritmo correcto.',
+      ejercicios: 'Elige un problema cotidiano (como calcular el cambio en una tienda o verificar si una persona puede votar). Identifica sus entradas, procesos y salidas, y construye el modelo antes de escribir cualquier código.'
+    }
+  ],
+  3: [
+    /* ── Unidad 3 ── */
+    {
+      titulo:     'Lenguajes y paradigmas de programación',
+      conceptos:  'Los lenguajes de programación permiten expresar algoritmos en una forma que pueda ejecutar una computadora. Los paradigmas de programación son estilos de pensamiento que guían la forma de resolver problemas, como el imperativo, el funcional o el orientado a objetos.',
+      definicion: 'Un paradigma es un modelo de programación que define cómo se organizan los datos, las instrucciones y las estructuras para construir soluciones lógicas y reutilizables.',
+      ejemplos:   'Python es un lenguaje multiparadigma porque permite programar de forma imperativa, orientada a objetos y, en algunos casos, funcional. Esto lo hace flexible para diferentes tipos de proyectos.',
+      ejercicios: 'Investiga y describe brevemente tres paradigmas de programación distintos. Indica para qué tipo de proyectos se recomienda cada uno y da un ejemplo de lenguaje que lo use.'
+    },
+    {
+      titulo:     'Introducción a la programación en Python',
+      conceptos:  'Python es un lenguaje de programación de alto nivel, interpretado y fácil de leer, por lo que resulta ideal para iniciarse en la programación. Destaca por su sintaxis clara, la gran cantidad de bibliotecas disponibles y su uso en automatización, ciencia de datos, desarrollo web y scripting.',
+      definicion: 'Python permite escribir programas con menos líneas de código que muchos lenguajes tradicionales, lo que facilita el aprendizaje y la comprensión de la lógica de programación.',
+      ejemplos:   'Un programa simple puede imprimir un saludo, solicitar un nombre al usuario y mostrarlo en pantalla. También puede calcular la suma de varios números con instrucciones breves y claras.',
+      ejercicios: 'Escribe un programa en Python que pida al usuario su nombre y su edad, y muestre un mensaje indicando en cuántos años cumplirá 100 años. Prueba el programa con al menos dos valores diferentes.'
+    },
+    {
+      titulo:     'Operadores algebraicos, relacionales y lógicos',
+      conceptos:  'Los operadores algebraicos realizan cálculos matemáticos como suma, resta y multiplicación; los relacionales comparan valores entre sí, como igualdad o mayor que; y los operadores lógicos combinan condiciones booleanas para formar decisiones más complejas.',
+      definicion: 'Estos operadores son herramientas fundamentales en la programación porque permiten realizar cálculos, evaluar condiciones y controlar el flujo de un programa mediante decisiones lógicas.',
+      ejemplos:   'a + b suma dos valores, a == b compara si son iguales, y (a > 0) and (b < 10) evalúa si ambas condiciones se cumplen al mismo tiempo. Este tipo de expresiones es muy común en programas reales.',
+      ejercicios: 'Escribe en Python una expresión que verifique si un número está entre 1 y 100, y además es par. Luego pruébala con los valores 50, 7 y 101, e indica qué resultado arroja cada uno.'
+    }
+  ]
+};
+
+/* ══════════════════════════════════════════
+   TABS PRINCIPALES
+   ══════════════════════════════════════════ */
+const tabs      = document.querySelectorAll('.tab-btn');
+const panels    = document.querySelectorAll('.panel');
+const indicator = document.getElementById('tab-indicator');
+
+function moveIndicator(tab) {
+  indicator.style.left  = tab.offsetLeft + 'px';
+  indicator.style.width = tab.offsetWidth + 'px';
+}
+
+window.addEventListener('load', () => moveIndicator(document.querySelector('.tab-btn[aria-selected="true"]')));
+window.addEventListener('resize', () => moveIndicator(document.querySelector('.tab-btn[aria-selected="true"]')));
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.target;
+    tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+    tab.setAttribute('aria-selected', 'true');
+    moveIndicator(tab);
+    panels.forEach(p => p.setAttribute('aria-hidden', 'true'));
+    document.getElementById('panel-' + target).setAttribute('aria-hidden', 'false');
+  });
+
+  tab.addEventListener('keydown', e => {
+    const arr = Array.from(tabs);
+    const i   = arr.indexOf(tab);
+    if (e.key === 'ArrowRight') { arr[(i + 1) % arr.length].focus(); arr[(i + 1) % arr.length].click(); }
+    if (e.key === 'ArrowLeft')  { arr[(i - 1 + arr.length) % arr.length].focus(); arr[(i - 1 + arr.length) % arr.length].click(); }
+  });
+});
+
+/* ══════════════════════════════════════════
+   NAVEGACIÓN TEMAS + SUBTABS
+   ══════════════════════════════════════════ */
+document.querySelectorAll('.temas-view').forEach(vistaTemas => {
+  const unidad    = Number(vistaTemas.dataset.unidad);
+  const detalle   = document.querySelector('.tema-detail[data-unidad="' + unidad + '"]');
+  const tituloEl  = detalle.querySelector('.tema-title');
+  const backBtn   = detalle.querySelector('.back-btn');
+  const subtabs   = detalle.querySelectorAll('.subtab-btn');
+  const subpanels = detalle.querySelectorAll('.subpanel');
+  const subInd    = detalle.querySelector('.subtab-indicator');
+
+  function moveSubInd(btn) {
+    subInd.style.left  = btn.offsetLeft + 'px';
+    subInd.style.width = btn.offsetWidth + 'px';
+  }
+
+  function fillSubpanels(tema) {
+    const d = temaData[unidad][tema - 1];
+    detalle.querySelector('.subpanel[data-sub="conceptos"]').innerHTML  = '<p>' + d.conceptos  + '</p>';
+    detalle.querySelector('.subpanel[data-sub="definicion"]').innerHTML = '<p>' + d.definicion + '</p>';
+    detalle.querySelector('.subpanel[data-sub="ejemplos"]').innerHTML   = '<p>' + d.ejemplos   + '</p>';
+    detalle.querySelector('.subpanel[data-sub="ejercicios"]').innerHTML =
+      '<div style="line-height:1.75;">' +
+      '<p style="margin-bottom:12px;"><strong style="color:#E7EEF7;">Ejercicio propuesto</strong></p>' +
+      '<p>' + d.ejercicios + '</p>' +
+      '</div>';
+  }
+
+  vistaTemas.querySelectorAll('.tema-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const tema = Number(card.dataset.tema);
+      tituloEl.textContent = temaData[unidad][tema - 1].titulo;
+
+      fillSubpanels(tema);
+
+      subtabs.forEach(s => s.setAttribute('aria-selected', 'false'));
+      subtabs[0].setAttribute('aria-selected', 'true');
+      subpanels.forEach(p => p.setAttribute('aria-hidden', 'true'));
+      subpanels[0].setAttribute('aria-hidden', 'false');
+
+      vistaTemas.hidden = true;
+      detalle.hidden    = false;
+
+      requestAnimationFrame(() => moveSubInd(subtabs[0]));
+    });
+  });
+
+  backBtn.addEventListener('click', () => {
+    detalle.hidden    = true;
+    vistaTemas.hidden = false;
+  });
+
+  subtabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      subtabs.forEach(s => s.setAttribute('aria-selected', 'false'));
+      btn.setAttribute('aria-selected', 'true');
+      moveSubInd(btn);
+      subpanels.forEach(p => p.setAttribute('aria-hidden', 'true'));
+      detalle.querySelector('.subpanel[data-sub="' + btn.dataset.sub + '"]').setAttribute('aria-hidden', 'false');
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (!detalle.hidden) {
+      const activo = detalle.querySelector('.subtab-btn[aria-selected="true"]');
+      if (activo) moveSubInd(activo);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
