@@ -160,6 +160,23 @@
     .units-portal-page .subpanel { display: none; }
     .units-portal-page .subpanel[aria-hidden="false"] { display: block; animation: panelIn .4s cubic-bezier(.22,1,.36,1) both; }
     .units-portal-page .subpanel p { color: #8FA3B8; font-size: 0.97rem; line-height: 1.75; max-width: 72ch; margin: 0; }
+    .return-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #E7EEF7;
+      text-decoration: none;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .return-home-btn:hover { transform: translateY(-2px); border-color: #6FA8FF; }
+    .return-home-btn .arrow { font-size: 1rem; }
   </style>
 </head>
 <body>
@@ -186,6 +203,8 @@
   </header>
 
   <main>
+    <a class="return-home-btn" href="index.html"><span class="arrow">←</span> Volver al portafolio</a>
+
     <section class="hero-card">
       <div class="hero-copy">
         <p class="section-label">// presentación</p>

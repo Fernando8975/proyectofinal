@@ -238,6 +238,23 @@
     max-width: 72ch;
     margin: 0;
   }
+  .return-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .return-home-btn:hover { transform: translateY(-2px); border-color: var(--teal); }
+  .return-home-btn .arrow { font-size: 1rem; }
   .pending {
     display: inline-block;
     margin-top: 14px;
@@ -250,6 +267,7 @@
 </head>
 <body>
 <div class="wrap">
+<a class="return-home-btn" href="../index.html"><span class="arrow">←</span> Volver al portafolio</a>
 
 <section class="units">
   <div class="units-heading">
