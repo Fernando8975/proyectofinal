@@ -33,6 +33,41 @@
   }
   .wrap { max-width: 920px; margin: 0 auto; }
 
+  .hero-intro {
+    background: linear-gradient(135deg, rgba(47,123,255,0.14), rgba(16,23,36,0.95));
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 22px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  }
+  .hero-intro h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.3rem, 2.1vw, 1.7rem);
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+  .hero-intro p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+  }
+  .hero-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .hero-pill {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+  .hero-pill strong { color: var(--ink); display: block; margin-bottom: 4px; }
+
   /* ── UNITS SECTION ── */
   .units { margin-top: 0; }
 
@@ -250,6 +285,16 @@
 </head>
 <body>
 <div class="wrap">
+
+<section class="hero-intro" aria-label="Resumen del contenido">
+  <h2>Contenido completo de las unidades</h2>
+  <p>Esta página reúne los temas principales de programación y algoritmia en un solo lugar, con conceptos, definiciones, ejemplos y ejercicios para cada unidad.</p>
+  <div class="hero-summary">
+    <div class="hero-pill"><strong>Unidad 1</strong>Fundamentos de computación y lógica digital.</div>
+    <div class="hero-pill"><strong>Unidad 2</strong>Algoritmos, diagramas de flujo y pseudocódigo.</div>
+    <div class="hero-pill"><strong>Unidad 3</strong>Paradigmas, Python y operadores básicos.</div>
+  </div>
+</section>
 
 <section class="units">
   <div class="units-heading">
